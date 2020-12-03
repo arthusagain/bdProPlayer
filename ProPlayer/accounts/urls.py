@@ -10,13 +10,13 @@ from django.contrib.auth.views import PasswordResetView ,PasswordResetConfirmVie
 app_name = 'accounts'
 
 urlpatterns = [
-    path('register', views.register, name='register'),
-    path('login', LoginView.as_view(), name='login'),
-    path('profile', views.profile, name='profile'),
-    path('logout', LogoutView.as_view(), name='logout'),
-    path('change-password', PasswordChangeView.as_view(success_url = reverse_lazy('change-password-done')), name='change-password'),
-    path('change-password-done', PasswordChangeDoneView.as_view()),
-    path('update',  UpdateView.as_view(
+    path('register/', views.register, name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('profile/', views.profile, name='profile'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('change-password-done')), name='change-password'),
+    path('change-password-done/', PasswordChangeDoneView.as_view()),
+    path('update/',  UpdateView.as_view(
                         success_url=reverse_lazy('sec-paginaSecreta'),
                         model=User,
                         fields=[
@@ -25,13 +25,13 @@ urlpatterns = [
                             'email',
                         ]
                     ), name='update'),
-    path('reset', PasswordResetView.as_view(
+    path('reset/', PasswordResetView.as_view(
             success_url=reverse_lazy('reset-done'),
             from_email='webmaster_do_site@aqui.com.br', #???
             subject_template_name='accounts/password_reset_subject.txt',
             email_template_name='accounts/password_reset_email.html',
          ), name='reset'),
-    path('reset-confirm', PasswordResetConfirmView.as_view(), name='reset-confirm'),
-    path('reset-done', PasswordResetDoneView.as_view(), name='reset-done'),
+    path('reset-confirm/', PasswordResetConfirmView.as_view(), name='reset-confirm'),
+    path('reset-done/', PasswordResetDoneView.as_view(), name='reset-done'),
 
 ]
