@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %} {% endblock title %}</title>
+    <meta name="description" content="Coleção com os dados dos seus jogadores profissionais favoritos do mundo dos e-sports">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    {% block head %} {% endblock head %}
+  </head>
+  <body>
+    <a href="{% url '' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url accounts:logout %}">Logout</a>
+    {% else %}
+        <a href="{% url accounts:login %}">Login</a>
+        <a href="{% url accounts:register %}">Register</a>
+    {% endif %}
+    {% block content %} {% endblock content %}
+  </body>
+</html>
