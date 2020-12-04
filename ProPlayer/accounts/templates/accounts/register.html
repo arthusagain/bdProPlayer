@@ -1,7 +1,11 @@
 {% extends 'accounts/base.html' %}
+{% load static %}
 
 {% block title %} Register {% endblock title %}
-
+{% block head %}
+ <script type='text/javascript'
+  src="{% static 'accounts/js/register.js' %}"></script> 
+{% endblock head%}
 {% block content %}
   <div>
     <form method="post">
