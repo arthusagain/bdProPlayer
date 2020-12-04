@@ -11,13 +11,13 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('register/', views.register, name='register'),
-    path('login/', LoginView.as_view(), name='login'),
+    path('login/', LoginView.as_view(template_name = 'accounts/login.html'), name='login'),
     path('profile/', views.profile, name='profile'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('change-password-done')), name='change-password'),
     path('change-password-done/', PasswordChangeDoneView.as_view()),
     path('update/<int:pk>',  UpdateView.as_view(
-                        success_url=reverse_lazy('sec-paginaSecreta'),
+                        success_url=reverse_lazy('profile'),
                         model=User,
                         fields=[
                             'first_name',
