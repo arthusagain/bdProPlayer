@@ -14,10 +14,10 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name = 'accounts/login.html'), name='login'),
     path('profile/', views.profile, name='profile'),
     path('logout/', LogoutView.as_view(template_name = 'accounts/logout.html'), name='logout'),
-    path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('change-password-done')), name='change-password'),
-    path('change-password-done/', PasswordChangeDoneView.as_view()),
+    path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('accounts:change-password-done')), name='change-password'),
+    path('change-password-done/', PasswordChangeDoneView.as_view(template_name = 'accounts/change-password-done.html'), name='change-password-done'),
     path('update/<int:pk>',  UpdateView.as_view(
-                        success_url=reverse_lazy('profile'),
+                        success_url=reverse_lazy('accounts:profile'),
                         model=User,
                         fields=[
                             'first_name',
@@ -26,7 +26,7 @@ urlpatterns = [
                         ]
                     ), name='update'),
     path('reset/', PasswordResetView.as_view(
-            success_url=reverse_lazy('reset-done'),
+            success_url=reverse_lazy('accounts:reset-done'),
             from_email='webmaster_do_site@aqui.com.br', #???
             subject_template_name='accounts/password_reset_subject.txt',
             email_template_name='accounts/password_reset_email.html',
