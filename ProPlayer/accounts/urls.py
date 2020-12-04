@@ -16,7 +16,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('change-password-done')), name='change-password'),
     path('change-password-done/', PasswordChangeDoneView.as_view()),
-    path('update/',  UpdateView.as_view(
+    path('update/<int:pk>',  UpdateView.as_view(
                         success_url=reverse_lazy('sec-paginaSecreta'),
                         model=User,
                         fields=[
@@ -31,7 +31,8 @@ urlpatterns = [
             subject_template_name='accounts/password_reset_subject.txt',
             email_template_name='accounts/password_reset_email.html',
          ), name='reset'),
-    path('reset-confirm/', PasswordResetConfirmView.as_view(), name='reset-confirm'),
+    path('reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='reset-confirm'),
     path('reset-done/', PasswordResetDoneView.as_view(), name='reset-done'),
+    path('verify_username/', views.verify_username, name='verify-username'),
 
 ]
