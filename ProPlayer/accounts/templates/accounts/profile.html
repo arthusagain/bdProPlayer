@@ -1,0 +1,12 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Profile
+{% endblock title %}
+
+{% block content %}
+<h1> {{ user.username }}'s profile </h1>
+
+<a href="{% url 'accounts:change-password' %}">Change password</a> |
+<a href="{% url 'accounts:update' pk=user.id %}">Update information</a>
+{% endblock content %}

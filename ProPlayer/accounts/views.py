@@ -22,7 +22,7 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/register.html')
+    return render(request, 'accounts/profile.html')
 
 
 def verify_username(request):
