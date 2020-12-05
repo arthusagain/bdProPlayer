@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from ProPlayer.models import *
 from ProPlayer.forms import *
+from django.http.response import HttpResponseRedirect
+from django.urls.base import reverse_lazy
 
 # Create your views here.
 
@@ -16,11 +18,11 @@ def add_player(request):
     if request.method == 'POST':
         form = PlayerModel2Form(request.POST)
         if form.is_valid():
-            form.save().save
-            return redirect('home')
+            form.save().save()
+            return HttpResponseRedirect(reverse_lazy('home'))
 
     else:
         form = PlayerModel2Form
 
     context = {'form' : form}
-    return render(request, 'accounts/register.html',context)
+    return render(request, 'ProPlayer/player-form.html',context)
