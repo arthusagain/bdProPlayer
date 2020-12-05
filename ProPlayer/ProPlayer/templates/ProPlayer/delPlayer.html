@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Apaga Jogador</title>
+    </head>
+    <body>
+        <h1>Remoção de jogadores</h1>
+        <form method="POST">
+            {% csrf_token %}
+            Confirma a remoção de {{ player.name }}?<br>
+            <button>
+                <a href="{% url 'player:lista-contatos' %}"style="text-decoration: none; color: black;">Cancela</a>
+            </button>
+            <input type="submit" value="Remove">
+        </form>
+    </body>
+</html>
