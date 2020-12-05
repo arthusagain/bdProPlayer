@@ -17,9 +17,11 @@ urlpatterns = [
     path('change-password/', PasswordChangeView.as_view(success_url = reverse_lazy('accounts:change-password-done')), name='change-password'),
     path('change-password-done/', PasswordChangeDoneView.as_view(template_name = 'accounts/change-password-done.html'), name='change-password-done'),
     path('update/<int:pk>',  UpdateView.as_view(
+                        template_name='accounts/update.html',
                         success_url=reverse_lazy('accounts:profile'),
                         model=User,
                         fields=[
+                            'username',
                             'first_name',
                             'last_name',
                             'email',

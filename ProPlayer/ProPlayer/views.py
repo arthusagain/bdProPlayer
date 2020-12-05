@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from ProPlayer.models import *
 
 # Create your views here.
 
 def home(request):
-    return render(request,"ProPlayer/home.html")
+    allPlayers = Player.objects.all()
+    context = {
+        'players':allPlayers,
+    }
+    return render(request,"ProPlayer/home.html",context)
