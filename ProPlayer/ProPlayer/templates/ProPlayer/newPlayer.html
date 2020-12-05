@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cadastrar Novo Pro-Player</title>
+    </head>
+    <body>
+        <h1>Cadastrar Novo ProPlayer</h1>
+        <form action = "" method = "Post">
+            {% csrf_token %}
+            <table>
+                {{ formulario.as_table}}
+            </table>
+            <button type="submit">Adicionar</button>
+        </form>
+    </body>
+</html>
