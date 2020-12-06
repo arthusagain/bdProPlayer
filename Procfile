@@ -1,1 +1,1 @@
-web: gunicorn ProPlayer.wsgi --log-file -
+web: gunicorn ProPlayer/ProPlayer.wsgi --log-file -
