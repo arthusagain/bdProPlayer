@@ -4,15 +4,15 @@
 <h1><b>Lista de Jogadores Profissionais:</b></h1>
 
 <div>
-    <a href="{%url 'proplayer:criar' %}" style="text-align: right";">+ Cadastrar novo jogador</a>
+    <a href="{% url 'add-player' %}" style="text-align: right";>+ Cadastrar novo jogador</a>
 </div>
 
 <table>
     <tr><th>Nome</th><th>Nome de Usuário</th><th>Data de Aniversário</th><th>Jogos Jogados</th><th>Vitórias de Campeonatos</th><th>Partidas</th><th>Time</th></tr>
-    {% for Jogador in Jogadores %}
+    {% for Jogador in players %}
     <tr>
-        <td>{{Jogador.name}}</td><td>{{Jogador.username}}</td><td>{{Jogador.birthday}}</td><td>{{Jogador.games}}</td><td>{{Jogador.victories}}</td><td>{{Jogador.matches}}</td><td>{{Jogador.team}}</td>
-        <td><a href="{%url 'proplayer:editar' pk = Jogador.id%}">Editar</a>|<a href="{%url 'proplayer:excluir' pk = Jogador.id%}">Excluir</a></td>
+        <td>{{Jogador.name}}</td><td>{{Jogador.username}}</td><td>{{Jogador.birthday}}</td><td>{{Jogador.games}}</td><td>{{Jogador.victories}}</td><td>{{Jogador.matches}}</td><td>{{Jogador.team.name}}</td>
+        <td><a href="{% url 'edit-player' pk=Jogador.id %}">Editar</a>|<a href="{% url 'rm-player' pk=Jogador.id %}">Excluir</a></td>
     </tr>
     {% empty %}
         <tr><th colspan = "7">Ainda não há jogadores cadastrados</th></tr>

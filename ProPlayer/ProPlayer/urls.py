@@ -15,13 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.edit import UpdateView
 from . import views
+from ProPlayer.models import Player
+from django.urls.base import reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
     path('', views.home, name='home'),
+
     path('add-player/', views.add_player, name='add-player'),
+    path('edit-player/<int:pk>/', views.edit_player, name='edit-player'),
+    path('rm-player/<int:pk>/', views.remove_player, name='rm-player'),
+
     path('add-game/', views.add_game, name='add-game'),
     path('add-team/', views.add_team, name='add-team'),
 ]
