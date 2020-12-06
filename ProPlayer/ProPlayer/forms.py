@@ -6,9 +6,24 @@ class PlayerModel2Form(forms.ModelForm):
         model = Player
         fields = '__all__'
 
-    team = forms.ModelChoiceField(queryset=Team.objects.all())
+    team = forms.ModelChoiceField(queryset=None)
 
-    game_options = tuple(
+    game_options = lambda  : tuple(
         [(game.pk,game.title) for game in list(Game.objects.all())]
     )
     games = forms.MultipleChoiceField(choices=game_options, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['team'].queryset = Team.objects.all()
+        
+
+class GameModel2Form(forms.ModelForm):
+    class Meta:
+        model = Game
+        fields = '__all__'
+
+class TeamModel2Form(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = '__all__'
