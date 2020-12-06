@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import redirect
+from django.http.response import HttpResponseRedirect
+from django.urls.base import reverse_lazy
 from django.http import JsonResponse
 
 # Create your views here.
@@ -12,7 +13,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return HttpResponseRedirect(reverse_lazy('accounts:profile'))
 
     else:
         form = UserCreationForm()
