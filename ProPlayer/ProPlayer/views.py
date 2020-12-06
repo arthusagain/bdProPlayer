@@ -3,6 +3,7 @@ from ProPlayer.models import *
 from ProPlayer.forms import *
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def home(request):
     return render(request,"ProPlayer/home.html",context)
 
 
-
+@login_required
 def add_player(request):
     if request.method == 'POST':
         form = PlayerModel2Form(request.POST)
@@ -28,6 +29,7 @@ def add_player(request):
     context = {'form' : form}
     return render(request, 'ProPlayer/player-form.html',context)
 
+@login_required
 def add_game(request):
     if request.method == 'POST':
         form = GameModel2Form(request.POST)
@@ -40,7 +42,8 @@ def add_game(request):
 
     context = {'form' : form}
     return render(request, 'ProPlayer/game-form.html',context)
-
+    
+@login_required
 def add_team(request):
     if request.method == 'POST':
         form = TeamModel2Form(request.POST)
