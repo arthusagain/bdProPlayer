@@ -1,10 +1,15 @@
-{% extends 'accounts/base.html' %}
+{% extends 'ProPlayer/base.html' %}
+{% load static %}
 
 {% block title %} Register {% endblock title %}
-
+{% block head %}
+ <script type='text/javascript'
+  src="{% static 'accounts/js/register.js' %}"></script> 
+{% endblock head%}
 {% block content %}
   <div>
     <form method="post">
+      <div id='idErro'>&nbsp;</div>
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" value="Register">

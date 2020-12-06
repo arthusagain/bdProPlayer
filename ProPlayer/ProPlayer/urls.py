@@ -21,4 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
     path('', views.home, name='home'),
+    path('add-player/', views.add_player, name='add-player'),
+    path('add-game/', views.add_game, name='add-game'),
+    path('add-team/', views.add_team, name='add-team'),
 ]

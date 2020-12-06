@@ -1,15 +1,16 @@
 {% extends 'ProPlayer/base.html' %}
+{% load static %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Register New Game {% endblock title %}
 
 {% block content %}
   <div>
     <form method="post">
+
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" value="Login">
+      <input type="submit" value="Register">
     </form> 
-    <a href="{% url 'accounts:reset' %}">
   </div>
-
 {% endblock content %}
+  
