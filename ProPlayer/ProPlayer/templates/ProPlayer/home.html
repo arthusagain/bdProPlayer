@@ -11,7 +11,17 @@
     <tr><th>Nome</th><th>Nome de Usuário</th><th>Data de Aniversário</th><th>Jogos Jogados</th><th>Vitórias de Campeonatos</th><th>Partidas</th><th>Time</th></tr>
     {% for Jogador in players %}
     <tr>
-        <td>{{Jogador.name}}</td><td>{{Jogador.username}}</td><td>{{Jogador.birthday}}</td><td>{{Jogador.games}}</td><td>{{Jogador.victories}}</td><td>{{Jogador.matches}}</td><td>{{Jogador.team.name}}</td>
+        <td>{{Jogador.name}}</td>
+        <td>{{Jogador.username}}</td>
+        <td>{{Jogador.birthday}}</td>
+        <td>
+        {% for game in Jogador.games.all %}
+            |{{game.title}}|
+        {% endfor %}
+        </td>
+        <td>{{Jogador.victories}}</td>
+        <td>{{Jogador.matches}}</td>
+        <td>{{Jogador.team.name}}</td>
         <td><a href="{% url 'edit-player' pk=Jogador.id %}">Editar</a>|<a href="{% url 'rm-player' pk=Jogador.id %}">Excluir</a></td>
     </tr>
     {% empty %}
